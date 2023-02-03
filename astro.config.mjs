@@ -14,14 +14,14 @@ import netlify from "@astrojs/netlify/functions";
 export default defineConfig({
   integrations: [vue(), tailwind(), partytown({
     config: {
-      resolveUrl: function (url, location, type) {
-        if (type === 'script') {
-          var proxyUrl = new URL('https://statuesque-duckanoo-44443f.netlify.app/');
-          proxyUrl.searchParams.append('url', url.href);
-          return proxyUrl;
-        }
-        return url;
-      },
+      // resolveUrl: function (url, location, type) {
+      //   if (type === 'script') {
+      //     var proxyUrl = new URL('https://statuesque-duckanoo-44443f.netlify.app/');
+      //     proxyUrl.searchParams.append('url', url.href);
+      //     return proxyUrl;
+      //   }
+      //   return url;
+      // },
       forward: ["dataLayer.push"]
     }
   })],
