@@ -1,0 +1,22 @@
+
+<header class="section">
+    <div class="flex justify-between mt-4">
+        <div>Logo</div>
+        <div class="cursor-pointer btn-menu">Menu</div>
+    </div>
+</header>
+<script>
+    let isMenuActive:boolean = false;
+
+    let toggleMenu= () => {
+        isMenuActive = !isMenuActive;
+        if(isMenuActive) {
+            console.log('menu actif');
+        } else {
+            console.log('pas de menu');
+        }
+    }
+
+    let btnMenu = document.querySelector('.btn-menu');
+    btnMenu!.addEventListener('click', toggleMenu);
+</script>
