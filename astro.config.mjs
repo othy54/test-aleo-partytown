@@ -8,6 +8,11 @@ import tailwind from "@astrojs/tailwind";
 import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
+import netlify from "@astrojs/netlify/functions";
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [vue(), tailwind(), partytown()]
+  integrations: [vue(), tailwind(), partytown()],
+  output: "server",
+  adapter: netlify()
 });
