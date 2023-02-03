@@ -13,12 +13,12 @@ import netlify from "@astrojs/netlify/functions";
 // https://astro.build/config
 export default defineConfig({
   integrations: [vue(), tailwind(), partytown({
-    resolveUrl(url, location) {
+    resolveUrl(url) {
       if (
         url.hostname.includes("google-analytics") ||
         url.hostname.includes("www.googletagmanager.com")
       ) {
-        const proxyUrl = new URL("/partytown");
+        const proxyUrl = new URL(Astro.url + "/partytown/");
         proxyUrl.searchParams.append("url", url);
         return proxyUrl;
       }
