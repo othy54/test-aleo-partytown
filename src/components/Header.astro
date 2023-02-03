@@ -4,18 +4,81 @@
         <div>Logo</div>
         <div class="cursor-pointer btn-menu">Menu</div>
     </div>
+
+    <div class="effect">
+        THIS IS EFFECT
+    </div>
+
+    <!-- <div class="effect-other">
+       OTHER EFFECT
+    </div> -->
 </header>
+<style lang="postcss">
+    .effect {
+        font-size: 72px;
+        margin-bottom: 1500px
+    }
+</style>
 <script>
+    import { gsap } from 'gsap';
+    // import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    // gsap.registerPlugin(ScrollTrigger);
+
     let isMenuActive:boolean = false;
+    let anim:any = '';
+    let isGsapImported:boolean = false;
+
+    let importGsap= () => {
+        let getGsap = () => import('gsap');
+            getGsap().then(({default: gsap}) => {
+                isGsapImported = true;
+                anim = gsap;
+                anim.to('.effect', {
+                    opacity: 0
+                })
+            })
+    }
 
     let toggleMenu= () => {
         isMenuActive = !isMenuActive;
-        if(isMenuActive) {
-            console.log('menu actif');
-        } else {
-            console.log('pas de menu');
+        if(!isGsapImported) {
+            importGsap();
         }
-    }
+        if(isMenuActive) {
+             if(isGsapImported) {
+                 anim.to('.effect', {
+                    opacity: 0
+                })
+             }
+        } else {
+            anim.to('.effect', {
+                opacity: 1
+            })
+        }
+    };
+    // let toggleMenu= () => {
+    //     isMenuActive = !isMenuActive;
+
+    //     if(isMenuActive) {
+    //         gsap.to('.effect', {
+    //                 opacity: 0
+    //             })
+    //     } else {
+    //         gsap.to('.effect', {
+    //             opacity: 1
+    //         })
+    //     }
+    // };
+
+    // gsap.to('.effect-other', {
+    //     scrollTrigger: {
+    //         trigger: '.effect-other',
+    //         scrub: true,
+    //     },
+    //     y: -50
+
+    // })
 
     let btnMenu = document.querySelector('.btn-menu');
     btnMenu!.addEventListener('click', toggleMenu);
