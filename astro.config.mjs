@@ -13,7 +13,7 @@ import netlify from "@astrojs/netlify/functions";
 // https://astro.build/config
 export default defineConfig({
   integrations: [vue(), tailwind(), partytown({
-    resolveUrl(url) {
+    resolveUrl: (url) => {
       if (
         url.hostname.includes("google-analytics")
       ) {
