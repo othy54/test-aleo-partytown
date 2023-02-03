@@ -22,6 +22,7 @@ export default defineConfig({
         }
         return url;
       },
+      forward: ["dataLayer.push"]
     }
   })],
   output: "server",
