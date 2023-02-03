@@ -15,14 +15,14 @@ export default defineConfig({
   integrations: [vue(), tailwind(), partytown({
     resolveUrl(url) {
       if (
-        url.hostname.includes("google-analytics") ||
-        url.hostname.includes("www.googletagmanager.com")
+        url.hostname.includes("google-analytics")
       ) {
-        const proxyUrl = new URL(Astro.url + "/partytown/");
+        const proxyUrl = new URL(Astro.url + "/partytown");
         proxyUrl.searchParams.append("url", url);
         return proxyUrl;
       }
     },
+    forward: ["dataLayer.push"]
   })],
   output: "server",
   adapter: netlify()
