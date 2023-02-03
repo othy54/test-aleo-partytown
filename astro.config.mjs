@@ -12,7 +12,18 @@ import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [vue(), tailwind(), partytown()],
+  integrations: [vue(), tailwind(), partytown({
+    config: {
+      resolveUrl: function (url, location, type) {
+        if (type === 'script') {
+          var proxyUrl = new URL('https://statuesque-duckanoo-44443f.netlify.app/');
+          proxyUrl.searchParams.append('url', url.href);
+          return proxyUrl;
+        }
+        return url;
+      },
+    }
+  })],
   output: "server",
   adapter: netlify()
 });
