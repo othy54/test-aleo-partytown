@@ -13,13 +13,15 @@ import netlify from "@astrojs/netlify/functions";
 // https://astro.build/config
 export default defineConfig({
   integrations: [vue(), tailwind(), partytown({
-    resolveUrl: function (url, type) {
-      if (type === 'script') {
-        var proxyUrl = new URL('https://statuesque-duckanoo-44443f.netlify.app/proxytown/');
-        proxyUrl.searchParams.append('url', url.href);
+    resolveUrl(url, location) {
+      if (
+        url.hostname.includes("google-analytics") ||
+        url.hostname.includes("www.googletagmanager.com")
+      ) {
+        const proxyUrl = new URL("/partytown");
+        proxyUrl.searchParams.append("url", url);
         return proxyUrl;
       }
-      return url;
     },
   })],
   output: "server",
