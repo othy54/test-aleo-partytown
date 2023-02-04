@@ -13,14 +13,14 @@ import netlify from "@astrojs/netlify/functions";
 // https://astro.build/config
 export default defineConfig({
   integrations: [vue(), tailwind(), partytown({
-    resolveUrl: (url) => {
-      if (url.hostname.includes("google-analytics")) {
-        const proxyUrl = new URL(Astro.url + "/partytown");
-        proxyUrl.searchParams.append("url", url.href);
-        return proxyUrl;
-      }
-      return url;
-    },
+    // resolveUrl: (url) => {
+    //   if (url.hostname.includes("google-analytics")) {
+    //     const proxyUrl = new URL(Astro.url + "/partytown");
+    //     proxyUrl.searchParams.append("url", url.href);
+    //     return proxyUrl;
+    //   }
+    //   return url;
+    // },
     forward: ["dataLayer.push"]
   })],
   output: "server",
