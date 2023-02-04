@@ -19,6 +19,7 @@ export default defineConfig({
         proxyUrl.searchParams.append("url", url.href);
         return proxyUrl;
       }
+      return url;
     },
     forward: ["dataLayer.push"]
   })],
