@@ -16,7 +16,7 @@ export default defineConfig({
     config: {
       resolveUrl: function (url) {
         const proxyMap = {
-          'www.google-analytics.com': 'statuesque-duckanoo-44443f.netlify.app/partytown',
+          'www.google-analytics.com': 'statuesque-duckanoo-44443f.netlify.app/api',
         }
         url.hostname = proxyMap[url.hostname] || url.hostname;
         return url;
