@@ -14,7 +14,6 @@ import netlify from "@astrojs/netlify/functions";
 export default defineConfig({
   integrations: [vue(), tailwind(), partytown({
     config: {
-      debug: true,
       forward: ["dataLayer.push"]
     }
   })],
