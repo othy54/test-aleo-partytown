@@ -22,7 +22,7 @@ export default defineConfig({
       //   }
       //   return url;
       // },
-      resolveUrl: (url) => {
+      resolveUrl: function (url) {
         const proxyMap = {
           'www.google-analytics.com': 'statuesque-duckanoo-44443f.netlify.app/partytown',
         }
