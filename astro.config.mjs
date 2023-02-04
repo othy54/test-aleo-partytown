@@ -13,15 +13,25 @@ import netlify from "@astrojs/netlify/functions";
 // https://astro.build/config
 export default defineConfig({
   integrations: [vue(), tailwind(), partytown({
-    // resolveUrl: (url) => {
-    //   if (url.hostname.includes("google-analytics")) {
-    //     const proxyUrl = new URL(Astro.url + "/partytown");
-    //     proxyUrl.searchParams.append("url", url.href);
-    //     return proxyUrl;
-    //   }
-    //   return url;
-    // },
-    forward: ["dataLayer.push"]
+    config: {
+      debug: true,
+      // resolveUrl: (url) => {
+      //   if (url.href.includes("google-analytics")) {
+      //     const proxyUrl = new URL(Astro.url + "/partytown");
+      //     proxyUrl.searchParams.append("url", url.href);
+      //     return proxyUrl;
+      //   }
+      //   return url;
+      // },
+      resolveUrl: (url) => {
+        const proxyMap = {
+          'www.google-analytics.com': 'statuesque-duckanoo-44443f.netlify.app/partytown',
+        }
+        url.hostname = proxyMap[url.hostname] || url.hostname;
+        return url;
+      },
+      forward: ["dataLayer.push"]
+    }
   })],
   output: "server",
   adapter: netlify()
