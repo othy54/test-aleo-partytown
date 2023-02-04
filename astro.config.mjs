@@ -15,21 +15,6 @@ export default defineConfig({
   integrations: [vue(), tailwind(), partytown({
     config: {
       debug: true,
-      // resolveUrl: (url) => {
-      //   if (url.href.includes("google-analytics")) {
-      //     const proxyUrl = new URL(Astro.url + "/partytown");
-      //     proxyUrl.searchParams.append("url", url.href);
-      //     return proxyUrl;
-      //   }
-      //   return url;
-      // },
-      // resolveUrl: (url) => {
-      //   const proxyMap = {
-      //     'www.google-analytics.com': 'statuesque-duckanoo-44443f.netlify.app/api',
-      //   }
-      //   url.hostname = proxyMap[url.hostname] || url.hostname;
-      //   return url;
-      // },
       forward: ["dataLayer.push"]
     }
   })],
