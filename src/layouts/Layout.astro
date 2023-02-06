@@ -1,4 +1,5 @@
 ---
+import Cursor from '../components/Cursor.astro';
 export interface Props {
   title: string;
   description: string;
@@ -17,12 +18,6 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description} />
     <!-- Google Tag Manager -->
-    <!-- <script type="text/partytown">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'https://statuesque-duckanoo-44443f.netlify.app/partytown/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-			})(window,document,'script','dataLayer','GTM-NMV3DFX');</script> -->
-
     <script
       type="text/partytown"
       defer
@@ -51,6 +46,7 @@ const { title, description } = Astro.props;
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <slot />
+    <Cursor />
   </body>
 </html>
 <style is:global>

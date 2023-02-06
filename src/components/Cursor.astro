@@ -1,0 +1,31 @@
+<div class="circle-cursor">
+<span>Click Me</span>
+</div>
+<script>
+    let cursor = document.querySelector('.circle-cursor') as HTMLElement;
+
+    document.addEventListener('mousemove', (e: MouseEvent) => {
+        cursor.style.top = e.clientY + 'px';
+        cursor.style.left = e.clientX + 'px';
+    })
+</script>
+<style>
+    .circle-cursor {
+        width: 120px;
+        aspect-ratio: 1;
+        background-color: red;
+        border-radius: 200px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        transition: top 0.1s, left 0.1s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & > span {
+        pointer-events: none;
+    }
+    }
+
+
+</style>

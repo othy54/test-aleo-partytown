@@ -6,9 +6,6 @@
 
   <div class="effect">THIS IS EFFECT</div>
 
-  <!-- <div class="effect-other">
-       OTHER EFFECT
-    </div> -->
 </header>
 <style lang="postcss">
     .effect {
@@ -16,10 +13,6 @@
     }
 </style>
 <script>
-  import { gsap } from "gsap";
-  // import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-  // gsap.registerPlugin(ScrollTrigger);
 
   let isMenuActive: boolean = false;
   let anim: any = "";
@@ -53,28 +46,6 @@
       });
     }
   };
-  // let toggleMenu= () => {
-  //     isMenuActive = !isMenuActive;
-
-  //     if(isMenuActive) {
-  //         gsap.to('.effect', {
-  //                 opacity: 0
-  //             })
-  //     } else {
-  //         gsap.to('.effect', {
-  //             opacity: 1
-  //         })
-  //     }
-  // };
-
-  // gsap.to('.effect-other', {
-  //     scrollTrigger: {
-  //         trigger: '.effect-other',
-  //         scrub: true,
-  //     },
-  //     y: -50
-
-  // })
 
   let btnMenu = document.querySelector(".btn-menu");
   btnMenu!.addEventListener("click", toggleMenu);
