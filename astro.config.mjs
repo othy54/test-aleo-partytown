@@ -14,13 +14,13 @@ import netlify from "@astrojs/netlify/functions";
 export default defineConfig({
   integrations: [vue(), tailwind(), partytown({
     config: {
-      resolveUrl: function (url) {
-        const proxyMap = {
-          'www.google-analytics.com': 'statuesque-duckanoo-44443f.netlify.app/api',
-        }
-        url.hostname = proxyMap[url.hostname] || url.hostname;
-        return url;
-      },
+      // resolveUrl: function (url) {
+      //   const proxyMap = {
+      //     'www.google-analytics.com': 'statuesque-duckanoo-44443f.netlify.app/api',
+      //   }
+      //   url.hostname = proxyMap[url.hostname] || url.hostname;
+      //   return url;
+      // },
       forward: ["dataLayer.push"]
     }
   })],
